@@ -1,3 +1,49 @@
+Escrow Contract with Tests (Anchor)
+A decentralized Escrow smart contract built on the Solana blockchain using the Anchor Framework.
+This project demonstrates secure token escrow flows with complete TypeScript test coverage.
+
+🚀 Project Overview
+This program enables two parties to securely exchange SPL tokens using an on-chain escrow mechanism.
+
+The contract supports:
+Creating an escrow offer (make)
+Depositing tokens into escrow (deposit)
+Accepting and completing the trade (take)
+Refunding tokens if the trade is cancelled (refund)
+All logic is executed on-chain with Program Derived Addresses (PDAs) for secure authority control.
+
+🛠 Tech Stack
+Solana
+Anchor Framework
+Rust (Smart Contract)
+TypeScript (Tests)
+SPL Token Program
+Associated Token Accounts (ATAs)
+
+📦 Features
+1️⃣ Make Escrow
+Initializer creates an escrow account (PDA)
+Defines:
+Token mint A (offered token)
+Token mint B (requested token)
+Amounts for trade
+Escrow PDA becomes authority
+
+2️⃣ Deposit Tokens
+Transfers offered tokens into escrow vault (ATA owned by PDA)
+Uses CPI to SPL Token program
+
+3️⃣ Take (Accept Trade)
+Taker sends requested tokens to initializer
+Escrow releases offered tokens to taker
+Vault account is closed
+
+4️⃣ Refund
+Initializer can reclaim deposited tokens
+Escrow vault is closed safely
+
+
+
 /////////////////////// state.rs ///////////////////
 Why we put Escrow in state.rs?
 We put Escrow in state.rs to separate data structures from logic, making the code modular and clean.
